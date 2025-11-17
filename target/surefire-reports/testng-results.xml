@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[<img style='width: 30%' src='../screenshots/loginSuccessWithValidCredentialTest_01_2025-11-17_18-36-19.png' />]]>
+    </line>
+    <line>
+      <![CDATA[<br /> <strong>../screenshots/loginSuccessWithValidCredentialTest_01_2025-11-17_18-36-19.png</strong>]]>
+    </line>
+    <line>
+      <![CDATA[<img style='width: 30%' src='../screenshots/loginFailedWithInvalidPasswordTest_02_2025-11-17_18-36-32.png' />]]>
+    </line>
+    <line>
+      <![CDATA[<br /> <strong>../screenshots/loginFailedWithInvalidPasswordTest_02_2025-11-17_18-36-32.png</strong>]]>
+    </line>
+    <line>
+      <![CDATA[<img style='width: 30%' src='../screenshots/loginFailedWithInvalidUsernameTest_03_2025-11-17_18-36-42.png' />]]>
+    </line>
+    <line>
+      <![CDATA[<br /> <strong>../screenshots/loginFailedWithInvalidUsernameTest_03_2025-11-17_18-36-42.png</strong>]]>
+    </line>
+    <line>
+      <![CDATA[<img style='width: 30%' src='../screenshots/loginWithNullPasswordTest_04_2025-11-17_18-36-56.png' />]]>
+    </line>
+    <line>
+      <![CDATA[<br /> <strong>../screenshots/loginWithNullPasswordTest_04_2025-11-17_18-36-56.png</strong>]]>
+    </line>
+    <line>
+      <![CDATA[<img style='width: 30%' src='../screenshots/loginWithNullUsernameAndNullPasswordTest_05_2025-11-17_18-37-06.png' />]]>
+    </line>
+    <line>
+      <![CDATA[<br /> <strong>../screenshots/loginWithNullUsernameAndNullPasswordTest_05_2025-11-17_18-37-06.png</strong>]]>
+    </line>
+    <line>
+      <![CDATA[<img style='width: 30%' src='../screenshots/addSingleProductToChartTest_01_2025-11-17_18-37-16.png' />]]>
+    </line>
+    <line>
+      <![CDATA[<br /> <strong>../screenshots/addSingleProductToChartTest_01_2025-11-17_18-37-16.png</strong>]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2025-11-17T18:36:07 ICT" name="Java Testing" finished-at="2025-11-17T18:37:17 ICT" duration-ms="69273">
+    <groups>
+    </groups>
+    <test started-at="2025-11-17T18:36:07 ICT" name="Basic Test" finished-at="2025-11-17T18:37:17 ICT" duration-ms="69273">
+      <class name="com.juaracoding.swaglabs.InventoryTest">
+        <test-method signature="addSingleProductToChartTest(java.lang.String,java.lang.String)[pri:1, instance:com.juaracoding.swaglabs.InventoryTest@3835c46]" started-at="2025-11-17T18:37:07 ICT" name="addSingleProductToChartTest" finished-at="2025-11-17T18:37:17 ICT" duration-ms="10018" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[standard_user]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[secret_sauce]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<img style='width: 30%' src='../screenshots/addSingleProductToChartTest_01_2025-11-17_18-37-16.png' />]]>
+            </line>
+            <line>
+              <![CDATA[<br /> <strong>../screenshots/addSingleProductToChartTest_01_2025-11-17_18-37-16.png</strong>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- addSingleProductToChartTest -->
+      </class> <!-- com.juaracoding.swaglabs.InventoryTest -->
+      <class name="com.juaracoding.swaglabs.LoginTest">
+        <test-method signature="loginSuccessWithValidCredentialTest(java.lang.String,java.lang.String)[pri:1, instance:com.juaracoding.swaglabs.LoginTest@16ec5519]" started-at="2025-11-17T18:36:08 ICT" name="loginSuccessWithValidCredentialTest" finished-at="2025-11-17T18:36:20 ICT" duration-ms="12856" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[standard_user]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[secret_sauce]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<img style='width: 30%' src='../screenshots/loginSuccessWithValidCredentialTest_01_2025-11-17_18-36-19.png' />]]>
+            </line>
+            <line>
+              <![CDATA[<br /> <strong>../screenshots/loginSuccessWithValidCredentialTest_01_2025-11-17_18-36-19.png</strong>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- loginSuccessWithValidCredentialTest -->
+        <test-method signature="loginFailedWithInvalidPasswordTest(java.lang.String,java.lang.String)[pri:2, instance:com.juaracoding.swaglabs.LoginTest@16ec5519]" started-at="2025-11-17T18:36:20 ICT" name="loginFailedWithInvalidPasswordTest" finished-at="2025-11-17T18:36:33 ICT" duration-ms="12497" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[invalid_user]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[secret_sauce]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<img style='width: 30%' src='../screenshots/loginFailedWithInvalidPasswordTest_02_2025-11-17_18-36-32.png' />]]>
+            </line>
+            <line>
+              <![CDATA[<br /> <strong>../screenshots/loginFailedWithInvalidPasswordTest_02_2025-11-17_18-36-32.png</strong>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- loginFailedWithInvalidPasswordTest -->
+        <test-method signature="loginFailedWithInvalidUsernameTest(java.lang.String,java.lang.String)[pri:3, instance:com.juaracoding.swaglabs.LoginTest@16ec5519]" started-at="2025-11-17T18:36:33 ICT" name="loginFailedWithInvalidUsernameTest" finished-at="2025-11-17T18:36:43 ICT" duration-ms="10460" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[standard_user]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[invalid_password]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<img style='width: 30%' src='../screenshots/loginFailedWithInvalidUsernameTest_03_2025-11-17_18-36-42.png' />]]>
+            </line>
+            <line>
+              <![CDATA[<br /> <strong>../screenshots/loginFailedWithInvalidUsernameTest_03_2025-11-17_18-36-42.png</strong>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- loginFailedWithInvalidUsernameTest -->
+        <test-method signature="loginWithNullPasswordTest(java.lang.String,java.lang.String)[pri:4, instance:com.juaracoding.swaglabs.LoginTest@16ec5519]" started-at="2025-11-17T18:36:43 ICT" name="loginWithNullPasswordTest" finished-at="2025-11-17T18:36:57 ICT" duration-ms="13228" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<img style='width: 30%' src='../screenshots/loginWithNullPasswordTest_04_2025-11-17_18-36-56.png' />]]>
+            </line>
+            <line>
+              <![CDATA[<br /> <strong>../screenshots/loginWithNullPasswordTest_04_2025-11-17_18-36-56.png</strong>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- loginWithNullPasswordTest -->
+        <test-method signature="loginWithNullUsernameAndNullPasswordTest(java.lang.String,java.lang.String)[pri:5, instance:com.juaracoding.swaglabs.LoginTest@16ec5519]" started-at="2025-11-17T18:36:57 ICT" name="loginWithNullUsernameAndNullPasswordTest" finished-at="2025-11-17T18:37:07 ICT" duration-ms="10158" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[standard_user]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[<img style='width: 30%' src='../screenshots/loginWithNullUsernameAndNullPasswordTest_05_2025-11-17_18-37-06.png' />]]>
+            </line>
+            <line>
+              <![CDATA[<br /> <strong>../screenshots/loginWithNullUsernameAndNullPasswordTest_05_2025-11-17_18-37-06.png</strong>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- loginWithNullUsernameAndNullPasswordTest -->
+      </class> <!-- com.juaracoding.swaglabs.LoginTest -->
+    </test> <!-- Basic Test -->
+  </suite> <!-- Java Testing -->
+</testng-results>
