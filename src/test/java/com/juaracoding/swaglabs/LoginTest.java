@@ -38,7 +38,7 @@ public class LoginTest extends BaseTest {
 
   @Test(priority = 2)
   @Parameters({"invalidUsername", "password"})
-  public void loginFailedWithInvalidPasswordTest(String invalidUsername, String password) throws InterruptedException {
+  public void loginFailedWithInvalidUsernameTest(String invalidUsername, String password) throws InterruptedException {
     openBrowserAndNavigateTo("https://www.saucedemo.com/");
 
     Thread.sleep(1000);
@@ -62,7 +62,7 @@ public class LoginTest extends BaseTest {
 
   @Test(priority = 3)
   @Parameters({"username", "invalidPassword"})
-  public void loginFailedWithInvalidUsernameTest(String username, String invalidPassword) throws InterruptedException {
+  public void loginFailedWithInvalidPasswordTest(String username, String invalidPassword) throws InterruptedException {
     openBrowserAndNavigateTo("https://www.saucedemo.com/");
 
     Thread.sleep(1000);
