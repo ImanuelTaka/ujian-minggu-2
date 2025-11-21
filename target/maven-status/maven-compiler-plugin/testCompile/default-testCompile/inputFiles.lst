@@ -1,3 +1,14 @@
-D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\LoginTest.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\pages\BasePage.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\utils\MiscUtil.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\pages\components\HeaderComponent.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\pages\LoginPage.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\listeners\ScreenshotListener.java
 D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\BaseTest.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\pages\IPageComponent.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\LoginTest.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\pages\InventoryPage.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\pages\components\NavbarComponent.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\listeners\SendEmailReporter.java
 D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\InventoryTest.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\pages\components\BaseComponent.java
+D:\SQA\swaglabs-test\src\test\java\com\juaracoding\swaglabs\utils\MailUtil.java

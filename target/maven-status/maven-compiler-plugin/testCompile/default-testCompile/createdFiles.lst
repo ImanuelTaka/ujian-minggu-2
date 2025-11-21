@@ -1,3 +1,16 @@
-com\juaracoding\swaglabs\BaseTest.class
+com\juaracoding\swaglabs\pages\BasePage.class
+com\juaracoding\swaglabs\utils\MiscUtil.class
+com\juaracoding\swaglabs\utils\MailUtil$1.class
+com\juaracoding\swaglabs\listeners\SendEmailReporter.class
+com\juaracoding\swaglabs\pages\components\HeaderComponent.class
+com\juaracoding\swaglabs\pages\IPageComponent.class
 com\juaracoding\swaglabs\LoginTest.class
 com\juaracoding\swaglabs\InventoryTest.class
+com\juaracoding\swaglabs\pages\components\NavbarComponent.class
+com\juaracoding\swaglabs\pages\LoginPage.class
+com\juaracoding\swaglabs\listeners\ScreenshotListener.class
+com\juaracoding\swaglabs\pages\components\BaseComponent.class
+com\juaracoding\swaglabs\pages\InventoryPage.class
+com\juaracoding\swaglabs\utils\MailUtil.class
+com\juaracoding\swaglabs\BaseTest.class
+com\juaracoding\swaglabs\utils\MailUtil$2.class

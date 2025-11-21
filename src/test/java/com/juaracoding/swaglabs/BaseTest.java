@@ -1,36 +1,59 @@
 package com.juaracoding.swaglabs;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
-public class BaseTest {
+import com.juaracoding.swaglabs.listeners.ScreenshotListener;
+import com.juaracoding.swaglabs.listeners.SendEmailReporter;
+import com.juaracoding.swaglabs.pages.LoginPage;
+
+
+@Listeners({ScreenshotListener.class, SendEmailReporter.class})
+public abstract class BaseTest {
     protected WebDriver driver;
+    protected String baseUrl = "https://www.saucedemo.com/";
+    
 
-    public void openBrowser(){
+    private boolean manualOpeningBrowser = false;
+
+    public void setManualOpenBrowser() {
+        manualOpeningBrowser = true;
+    }
+
+    public void setAutoOpenBrowser() {
+        manualOpeningBrowser = false;
+    }
+
+
+    @BeforeMethod
+    public void setUp(ITestContext context) {
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
+        context.setAttribute("driver", driver);
+        if (!manualOpeningBrowser) {
+            driver.get(baseUrl);
+        }
     }
 
-    public void navigateUrl(String url){
-        driver.get(url);
-    }
-
-    public void quitBrowser(){
+    @AfterMethod
+    public void teardown(ITestContext context) {
+        if (driver != null) {
         driver.quit();
+        }
     }
 
-    public void preTestLogin(String username, String password) throws InterruptedException {
-        openBrowserAndNavigateTo("https://www.saucedemo.com/");
-        Thread.sleep(500);
-        driver.findElement(By.id("user-name")).sendKeys(username);
-        Thread.sleep(500);
-        driver.findElement(By.id("password")).sendKeys(password);
-        Thread.sleep(500);
-        driver.findElement(By.id("login-button")).click();
-     }
-    public void openBrowserAndNavigateTo(String url){
-        openBrowser();
+    public void openBrowser(String url) {
         driver.get(url);
-    }
+  }
+
+
+    public void preTestLogin(String username, String password) {
+    LoginPage loginPage = new LoginPage(driver);
+    loginPage.login(username, password);
+  }
 }

@@ -1,57 +1,153 @@
 package com.juaracoding.swaglabs;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.juaracoding.swaglabs.utils.ScreenshotUtil;
+import com.juaracoding.swaglabs.pages.InventoryPage;
+import com.juaracoding.swaglabs.pages.LoginPage;
+import com.juaracoding.swaglabs.utils.MiscUtil;
 
 public class InventoryTest extends BaseTest {
   
-  /**
-   * Test Case ID: 
-   *  TC-INV-001
-   * 
-   * Judul: 
-   *  Pengguna menambahkan satu produk ke keranjang dari halaman inventaris.
-   * 
-   * Skenario: 
-   *  Setelah login, pengguna berada di halaman inventaris dan menambahkan satu item ke keranjang belanja.
-   * @throws InterruptedException 
-   */
-  @Test(priority = 1)
+   private InventoryPage inventoryPage;
+
+  @Test(priority = 1, enabled = true)
   @Parameters({"username", "password"})
-  public void addSingleProductToChartTest(String username, String password) throws InterruptedException {
-    // 1. Login sebagai standard_user.
+  public void addSingleProductToCartTest(String username, String password) {
+
     preTestLogin(username, password);
 
-    // 2. Di halaman inventaris, cari produk "Sauce Labs Backpack".
-    WebElement buttonAddToChart = driver.findElement(By.xpath("//button[@data-test='add-to-cart-sauce-labs-backpack']"));
+    inventoryPage = new InventoryPage(driver);
+
+    inventoryPage.getHeaderComponent().setButtonAddToCart("//button[@data-test='add-to-cart-sauce-labs-backpack']");
+    inventoryPage.getHeaderComponent().setButtonRemoveCart("//button[@data-test='remove-sauce-labs-backpack']");
+
+    inventoryPage.getHeaderComponent().clickButtonAddToCart();
+
+    Assert.assertFalse(inventoryPage.getHeaderComponent().isVisibleButtonAddToCart());
+    Assert.assertTrue(inventoryPage.getHeaderComponent().isVisibleButtonRemoveToCart());
+
+    Assert.assertEquals(inventoryPage.getHeaderComponent().getTotalCart(), 1);
+  }
+
+  @Test (priority = 2, enabled = true)
+  @Parameters({"username", "password"})
+  public void addMultipleProductToCartTest(String username, String password){
+    preTestLogin(username, password);
+    List<Boolean> removeButtons = new ArrayList<>();
+
+    inventoryPage = new InventoryPage(driver);
+
+    inventoryPage.getHeaderComponent().setButtonAddToCart("//button[@data-test='add-to-cart-sauce-labs-backpack']");
+    inventoryPage.getHeaderComponent().clickButtonAddToCart();
+
+    inventoryPage.getHeaderComponent().setButtonAddToCart("//button[@data-test='add-to-cart-sauce-labs-bike-light']");
+    inventoryPage.getHeaderComponent().clickButtonAddToCart();
+
+    inventoryPage.getHeaderComponent().setButtonAddToCart("//button[@data-test='add-to-cart-sauce-labs-bolt-t-shirt']");
+    inventoryPage.getHeaderComponent().clickButtonAddToCart();
+
+    inventoryPage.getHeaderComponent().setButtonRemoveCart("//button[@data-test='remove-sauce-labs-backpack']");
+    removeButtons.add(inventoryPage.getHeaderComponent().isVisibleButtonRemoveToCart());
+
+    inventoryPage.getHeaderComponent().setButtonRemoveCart("//button[@data-test='remove-sauce-labs-bike-light']");
+    removeButtons.add(inventoryPage.getHeaderComponent().isVisibleButtonRemoveToCart());
+
+    inventoryPage.getHeaderComponent().setButtonRemoveCart("//button[@data-test='remove-sauce-labs-bolt-t-shirt']");
+    removeButtons.add(inventoryPage.getHeaderComponent().isVisibleButtonRemoveToCart());
+
+    int expected = 3;
+    long actual = removeButtons.stream()
+      .filter(n -> n)
+      .count();
+
+    Assert.assertEquals(actual, expected);
+    Assert.assertEquals(inventoryPage.getHeaderComponent().getTotalCart(), expected);
+  }
+
+  @Test(priority = 3, enabled = true)
+  @Parameters({"username", "password"})
+  public void deleteProductFromInventariesPageTest(String username, String password) {
     
-    // 3. Klik tombol "Add to cart" pada produk tersebut.
-    buttonAddToChart.click();
+    preTestLogin(username, password);
 
-    // 4. Tombol pada produk "sauce-labs-backpack" berubah menjadi "Remove".
-    WebElement buttonRemove = driver.findElement(By.xpath("//button[@data-test='remove-sauce-labs-backpack']"));
-    String actualButtonChartText = buttonRemove.getText();
-    String expectedButtonChartText = "Remove";
-    Assert.assertEquals(actualButtonChartText, expectedButtonChartText);
+    inventoryPage = new InventoryPage(driver);
 
-    // 5. Ikon keranjang belanja di pojok kanan atas menampilkan angka "1".
-    WebElement chartIcon = driver.findElement(By.xpath("//span[@data-test='shopping-cart-badge']"));
-    String actualTotalChartText = chartIcon.getText();
-    String expectedTotalChartText = "1";
-    Assert.assertEquals(actualTotalChartText, expectedTotalChartText);
+    inventoryPage.getHeaderComponent().setButtonAddToCart("//button[@data-test='add-to-cart-sauce-labs-backpack']");
+    inventoryPage.getHeaderComponent().clickButtonAddToCart();
 
-    String path = ScreenshotUtil.takeScreenshot(driver, "addSingleProductToChartTest_01");
-    Reporter.log("<img style='width: 30%' src='" + path + "' />");
-    Reporter.log("<br /> <strong>" + path + "</strong>");
+    Assert.assertEquals(inventoryPage.getHeaderComponent().getTotalCart(), 1);
+
+    inventoryPage.getHeaderComponent().setButtonRemoveCart("//button[@data-test='remove-sauce-labs-backpack']");
+    inventoryPage.getHeaderComponent().clickButtonRemoveCart();
+
+    Assert.assertTrue(inventoryPage.getHeaderComponent().isVisibleButtonAddToCart());
+    Assert.assertFalse(inventoryPage.getHeaderComponent().isVisibleCartIcon());
+  }
+
+
+  @Test(priority = 4, enabled = true)
+  @Parameters({ "username", "password" })
+  public void orderLowToHighBasePriceTest(String username, String password) {
+    preTestLogin(username, password);
+
+    inventoryPage = new InventoryPage(driver);
+    inventoryPage.selectLowToHigh();
+
+    Assert.assertTrue(MiscUtil.isSorted(inventoryPage.getPrices()));
+  }
+
+  @Test(priority = 5, enabled = true)
+  public void forbidenAccessToInventoryPageWithoutLoginTest() {
+    setManualOpenBrowser();
+    openBrowser("https://www.saucedemo.com/inventory.html");
+
+    LoginPage loginPage = new LoginPage(driver);
+
+    String expected = baseUrl;
+    Assert.assertEquals(loginPage.getCurrentURL(), expected);
+
+
+    expected = "Epic sadface: You can only access '/inventory.html' when you are logged in.";
+    Assert.assertEquals(loginPage.getErrorMessage(), expected);
+    setAutoOpenBrowser();
+  }
+
+  @Test(priority = 6, enabled = true)
+  @Parameters({"username", "password"})
+  public void resetApplicationSateAfterProductAddTest(String username, String password) {
+    preTestLogin(username, password);
+
+    List<Boolean> addToCartButtons = new ArrayList<>();
+    inventoryPage = new InventoryPage(driver);
+
+    inventoryPage.getHeaderComponent().setButtonAddToCart("//button[@data-test='add-to-cart-sauce-labs-backpack']");
+    inventoryPage.getHeaderComponent().clickButtonAddToCart();
+
+    inventoryPage.getHeaderComponent().setButtonAddToCart("//button[@data-test='add-to-cart-sauce-labs-bike-light']");
+    inventoryPage.getHeaderComponent().clickButtonAddToCart();
+
+    Assert.assertEquals(inventoryPage.getHeaderComponent().getTotalCart(), 2);
+
+    inventoryPage.getNavbarComponent().clickBurgerMenu();
+    inventoryPage.getNavbarComponent().clickResetSideBar();
+
+    Assert.assertFalse(inventoryPage.getHeaderComponent().isVisibleCartIcon());
     
-  
-    quitBrowser();
+    inventoryPage.getHeaderComponent().setButtonAddToCart("//button[@data-test='add-to-cart-sauce-labs-backpack']");
+    addToCartButtons.add(inventoryPage.getHeaderComponent().isVisibleButtonAddToCart());
 
+    inventoryPage.getHeaderComponent().setButtonAddToCart("//button[@data-test='add-to-cart-sauce-labs-bike-light']");
+    addToCartButtons.add(inventoryPage.getHeaderComponent().isVisibleButtonAddToCart());
+
+    long actual = addToCartButtons.stream()
+      .filter(n -> n)
+      .count();
+
+    Assert.assertEquals(actual, 2);
   }
 }
